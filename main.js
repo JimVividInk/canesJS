@@ -89,3 +89,69 @@ if (window.location.pathname === "/checkout/6-payment_NEW.php") {
     updateSpendCategory();
   });
 }
+
+function askIfCustomized() {
+  const tableData = $(".tablesorter tbody td").toArray();
+  const productList = [
+    "Achievement Awards - Blue",
+    "Achievement Awards - Green",
+    "Achievement Awards - Orange",
+    "Achievement Awards - Purple",
+    "Achievement Awards - Red",
+    "Bravery Achievement Awards",
+    "Dental Achievement Awards",
+    "Spanish Achievement Awards",
+    "Spanish Achievement Awards - Half Size",
+    "Sports Achievement Awards",
+    "Summer Achievement Awards",
+    "VBS Achievement Awards",
+  ];
+  if (tableData.length !== 0) {
+    const productName = $(".tablesorter tbody tr td")[1].innerText;
+    if (productList.includes(productName)) {
+      console.log("Hey");
+      tableData.forEach((data, index) => {
+        if (data.innerText === "PAPER") {
+          data.innerHTML = `<strong>Did you customize this item?</strong>`;
+          setTimeout(() => {
+            $("#paperID option")[0].innerText = "Yes";
+            $("#paperID option")[1].innerText = "No";
+            console.log(localStorage.getItem("isCustom"));
+            if (localStorage.getItem("isCustom") !== null) {
+              console.log("Is custom");
+              $("#paperID option")[0].selected = "selected";
+              localStorage.removeItem("isCustom");
+              document.getElementById("itemPrice").innerText = "$15.00";
+            } else {
+              console.log("Is not custom");
+              console.log($("#paperID option")[0]);
+              $("#paperID option")[1].selected = "selected";
+              localStorage.removeItem("isCustom");
+              document.getElementById("itemPrice").innerText = "$10.00";
+            }
+          }, 250);
+        }
+      });
+    }
+  }
+}
+
+askIfCustomized();
+function setIsCustomized() {
+  const templateName = $(".templateName a")[0].attributes.title.value;
+  if (templateName === "Award Test") {
+    let fields = [];
+    const inputs = $("#show_userform table tbody tr td:nth-child(2) input");
+    inputs.each((index, input) => {
+      if (input.value.length > 0) fields.push(input.value);
+    });
+    console.log(fields);
+    if (fields.length > 0) {
+      localStorage.setItem("isCustom", "true");
+    } else {
+      localStorage.removeItem("isCustom");
+    }
+  }
+}
+
+$("#proceedButton").on("click", () => setIsCustomized());
