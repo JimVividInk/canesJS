@@ -90,22 +90,23 @@ if (window.location.pathname === "/checkout/6-payment_NEW.php") {
   });
 }
 
+const productList = [
+  "Achievement Awards - Blue",
+  "Achievement Awards - Green",
+  "Achievement Awards - Orange",
+  "Achievement Awards - Purple",
+  "Achievement Awards - Red",
+  "Bravery Achievement Awards",
+  "Dental Achievement Awards",
+  "Spanish Achievement Awards",
+  "Spanish Achievement Awards - Half Size",
+  "Sports Achievement Awards",
+  "Summer Achievement Awards",
+  "VBS Achievement Awards",
+];
+
 function askIfCustomized() {
   const tableData = $(".tablesorter tbody td").toArray();
-  const productList = [
-    "Achievement Awards - Blue",
-    "Achievement Awards - Green",
-    "Achievement Awards - Orange",
-    "Achievement Awards - Purple",
-    "Achievement Awards - Red",
-    "Bravery Achievement Awards",
-    "Dental Achievement Awards",
-    "Spanish Achievement Awards",
-    "Spanish Achievement Awards - Half Size",
-    "Sports Achievement Awards",
-    "Summer Achievement Awards",
-    "VBS Achievement Awards",
-  ];
   if (tableData.length !== 0) {
     const productName = $(".tablesorter tbody tr td")[1].innerText;
     if (productList.includes(productName)) {
@@ -139,7 +140,7 @@ function askIfCustomized() {
 askIfCustomized();
 function setIsCustomized() {
   const templateName = $(".templateName a")[0].attributes.title.value;
-  if (templateName === "Award Test") {
+  if (productList.includes(templateName)) {
     let fields = [];
     const inputs = $("#show_userform table tbody tr td:nth-child(2) input");
     inputs.each((index, input) => {
