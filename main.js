@@ -140,7 +140,7 @@ function askIfCustomized() {
 askIfCustomized();
 function setIsCustomized() {
   const templateName = $(".templateName a")[0].attributes.title.value;
-  console.log(templateName)
+  console.log(templateName);
   if (productList.includes(templateName)) {
     let fields = [];
     const inputs = $("#show_userform table tbody tr td:nth-child(2) input");
@@ -156,4 +156,7 @@ function setIsCustomized() {
   }
 }
 
-$("#proceedButton").on("click", () => setIsCustomized());
+$("#proceedButton").on("click", () => {
+  console.log("Clicked!");
+  setIsCustomized();
+});
