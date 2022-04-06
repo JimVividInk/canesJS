@@ -114,20 +114,6 @@ function askIfCustomized() {
       tableData.forEach((data, index) => {
         if (data.innerText === "PAPER") {
           data.innerHTML = `<strong>Did you customize this item?</strong>`;
-          setTimeout(() => {
-//             $("#paperID option")[0].innerText = "Yes";
-//             $("#paperID option")[1].innerText = "No";
-            console.log(localStorage.getItem("isCustom"));
-//             if (localStorage.getItem("isCustom") !== null) {
-//               $("#paperID option")[0].selected = "selected";
-//               localStorage.removeItem("isCustom");
-//               document.getElementById("itemPrice").innerText = "$15.00";
-//             } else {
-//               $("#paperID option")[1].selected = "selected";
-//               localStorage.removeItem("isCustom");
-//               document.getElementById("itemPrice").innerText = "$10.00";
-//             }
-          }, 250);
         }
       });
     }
