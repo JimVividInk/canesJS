@@ -115,8 +115,8 @@ function askIfCustomized() {
         if (data.innerText === "PAPER") {
           data.innerHTML = `<strong>Did you customize this item?</strong>`;
           setTimeout(() => {
-            $("#paperID option")[0].innerText = "Yes";
-            $("#paperID option")[1].innerText = "No";
+//             $("#paperID option")[0].innerText = "Yes";
+//             $("#paperID option")[1].innerText = "No";
             console.log(localStorage.getItem("isCustom"));
 //             if (localStorage.getItem("isCustom") !== null) {
 //               $("#paperID option")[0].selected = "selected";
