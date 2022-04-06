@@ -114,6 +114,11 @@ function askIfCustomized() {
       tableData.forEach((data, index) => {
         if (data.innerText === "PAPER") {
           data.innerHTML = `<strong>Did you customize this item?</strong>`;
+                    setTimeout(() => {
+            $("#paperID option")[0].innerText = "Yes";
+            $("#paperID option")[1].innerText = "No";
+
+          }, 250);
         }
       });
     }
