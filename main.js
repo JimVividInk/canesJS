@@ -121,12 +121,12 @@ function askIfCustomized() {
             if (localStorage.getItem("isCustom") !== null) {
               $("#paperID option")[0].selected = "selected";
               localStorage.removeItem("isCustom");
-              document.getElementById("itemPrice").innerText = "$15.00";
+//               document.getElementById("itemPrice").innerText = "$15.00";
             } else {
 
               $("#paperID option")[1].selected = "selected";
               localStorage.removeItem("isCustom");
-              document.getElementById("itemPrice").innerText = "$10.00";
+//               document.getElementById("itemPrice").innerText = "$10.00";
             }
           }, 250);
         }
